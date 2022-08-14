@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+#book {
+	table {
+		tr {
+			&:last-child {
+				td[colspan="2"] {
+					border-width: 0;
+					text-align: center;
+				}
+			}
+			td {
+				&:first-child {
+					text-align: right;
+				}
+			}
+		}
+	}
+	#update, #regist, #search {
+		table {
+			td {
+				padding: 0.25rem;
+			}
+		}
+		form {
+			input {
+				margin: 0.35rem;
+				&[type="text"] {
+					width: 50rem;
+					&[name="isbn"] {
+						width: 10.5rem;
+					}
+					&[name="title"] {
+						width: 50rem;
+					}
+				}
+				&[type="number"] {
+					width: 5rem;
+				}
+			}
+			select {
+				margin-left: 0.25rem;
+				margin-right: 0.25rem;
+			}
+			button {
+				width: 10rem;
+				margin-top: 0.75rem;
+			}
+		}
+	}
+}

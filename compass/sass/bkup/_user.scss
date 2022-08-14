@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+#user {
+	table {
+		tr {
+			&:last-child {
+				td[colspan="2"] {
+					border-width: 0;
+					text-align: center;
+				}
+			}
+			td {
+				&:first-child {
+					text-align: right;
+				}
+			}
+		}
+	}
+	#update, #regist {
+		table {
+			td {
+				padding: 0.50rem;
+			}
+		}
+		form {
+			input {
+				margin: 0.35rem;
+				&[name="postal"] {
+					width: 6rem;
+				}
+				&[name="phone"] {
+					width: 8rem;
+				}
+			}
+			textarea {
+				margin-left: 1.75rem;
+				width: 50rem;
+			}
+			select {
+				margin-left: 0.25rem;
+				margin-right: 0.25rem;
+			}
+			button {
+				width: 10rem;
+				margin-top: 0.75rem;
+			}
+		}
+	}
+}

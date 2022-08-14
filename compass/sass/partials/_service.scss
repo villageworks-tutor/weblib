@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+#service {
+  #list {
+    form {
+      input {
+        &[type="radio"] {
+          margin: 0;
+          padding: 0;
+          &[id="no-disposal"], &[id="disposal"] {
+            margin-left: 1.0rem;
+          }
+        }
+      }
+    }
+    table {
+      tr {
+        td {
+          text-align: center;
+          &:first-child {
+            text-align: right;
+          }
+          &:nth-child(3) {
+            text-align: left;
+          }
+          &:last-child {
+            text-align: center;
+          }
+          &[colspan] {
+            padding-top: 1.5rem;
+            label {
+              margin-left: 0;
+              &[for="disposal"] {
+                margin-right: 1.75rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #disposal {
+    form {
+      textarea {
+        width: 50rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@charset "utf-8";
+@import "./utils";
+
+#signin {
+	#entry {
+		form {
+			margin: sizeByScale(2);
+			button {
+				margin: sizeByScale(0.50) sizeByScale(6.50);
+			}
+		}
+		dl {
+			margin-left: sizeByScale(1.25);
+			dt, dd {
+				display: inline-block;
+				margin: 0;
+			}
+			dt {
+				width: sizeByScale(5.0);
+			}
+		}
+	}
+}

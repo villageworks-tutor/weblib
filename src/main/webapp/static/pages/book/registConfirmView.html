@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>index - 図書管理システム</title>
+	<link rel="stylesheet" href="../../../assets/css/style.css" />
+</head>
+
+<body>
+	<header>
+		<h1>某図書館　図書管理システム</h1>
+		<p><a href="../../../index.html">トップメニューへ戻る</a></p>
+	</header>
+
+	<main id="user">
+		<article>
+			<h2>資料情報登録</h2>
+			<section id="regist">
+				<h3>確認</h3>
+				<p>以下の情報で登録します。</p>
+				<p>登録する場合は［登録する］ボタンをクリックしてください。また、修正する場合は［戻る］ボタンをクリックしてください。</p>
+				<form>
+					<table>
+						<tr>
+							<th>ISDN</th>
+							<td>9784798153612</td>
+						</tr>
+						<tr>
+							<th>タイトル</th>
+							<td>もっとプログラマ脳を鍛える数学パズル</td>
+						</tr>
+						<tr>
+							<th>著者</th>
+							<td>増井敏克</td>
+						</tr>
+						<tr>
+							<th>出版社</th>
+							<td>翔泳社</td>
+						</tr>
+						<tr>
+							<th>出版年月日</th>
+							<td>2018年 2月 1日</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<button formaction="registCompleteView.html" formmethod="post">登録する</button>
+								<button formaction="registView.html" formmethod="post">戻る</button>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</section>
+		</article>
+	</main>
+
+	<footer>
+		<p id="copyright">&copy;2017-2019 XXX All right reserved.</p>
+	</footer>
+</body>
+
+</html>

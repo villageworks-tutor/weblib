@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>index - 図書管理システム</title>
+  <link rel="stylesheet" href="../../../assets/css/style.css" />
+</head>
+
+<body>
+  <header>
+    <h1>某図書館　図書管理システム</h1>
+    <p><a href="../../../index.html">トップメニューへ戻る</a></p>
+  </header>
+
+  <main id="service">
+    <article id="catalogue">
+      <h2>資料目録</h2>
+      <section id="list">
+        <h3>目録一覧</h3>
+        <form>
+          <table>
+            <tr>
+              <th>項番</th>
+              <th>ISBN</th>
+              <th>図書分類</th>
+              <th>タイトル</th>
+              <th>著者</th>
+              <th>出版社</th>
+              <th>出版年</th>
+              <th>処理選択</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>9784798103259</td>
+              <td>総記</td>
+              <td>例解 JSPベストプラクティス</td>
+              <td>Andrew Patzer</td>
+              <td>翔泳社</td>
+              <td>2003-12-18</td>
+              <td>
+                <button formaction="../book/updateView.html?isbn=9784777511716" formmethod="get">編集</button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>9784480425993</td>
+              <td>哲学</td>
+              <td>よいこの君主論</td>
+              <td>架神 恭介/辰巳 一世</td>
+              <td>筑摩書房</td>
+              <td>2009-05-11</td>
+              <td>
+                <button formaction="../book/updateView.html?isbn=9784777511716" formmethod="get">編集</button>
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>9784791762460</td>
+              <td>自然科学</td>
+              <td>人生を完全にダメにするための11のレッスン</td>
+              <td>ドミニク=ノゲーズ</td>
+              <td>青土社</td>
+              <td>2005-11-01</td>
+              <td>
+                <button formaction="../book/updateView.html?isbn=9784777511716" formmethod="get">編集</button>
+              </td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>9784894712768</td>
+              <td>技術</td>
+              <td>UMLによるWebアプリケーション開発</td>
+              <td>中田成典</td>
+              <td>ピアソン・エデュケーション</td>
+              <td>2000-12-01</td>
+              <td>
+                <button formaction="../book/updateView.html?isbn=9784777511716" formmethod="get">編集</button>
+              </td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>9784777511716</td>
+              <td>技術</td>
+              <td>Strutsを活用したWebアプリケーション開発</td>
+              <td>中村健二</td>
+              <td>工学社</td>
+              <td>2005-10-01</td>
+              <td>
+                <button formaction="../book/updateView.html?isbn=9784777511716" formmethod="get">編集</button>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <p id="copyright">&copy;2017-2019 XXX All right reserved.</p>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+html {
+  font-size: 62.5%;
+}
+html body {
+  font-size: 1.4rem;
+  color: dimgray;
+  margin: 2rem;
+  padding: 0.075rem 1.5rem;
+}
+html body header p {
+  text-align: right;
+  font-size: 1.12rem;
+}
+html body main {
+  padding: 0.50rem;
+}
+html body main article {
+  margin: 2.25rem 0.25rem;
+}
+html body main article section {
+  margin: 2rem 0.75rem;
+}
+
+h1 {
+  font-size: 2.31rem;
+}
+
+h2 {
+  font-size: 1.82rem;
+}
+
+h3 {
+  font-size: 1.61rem;
+}
+
+h2 {
+  padding: 0.35rem 0.75rem;
+  padding-bottom: 0;
+  border-left: 1.5rem solid #006e54;
+  border-bottom: 0.2rem solid #006e54;
+}
+
+h3, p {
+  margin: 0.75rem 0;
+  padding: 0;
+}
+
+p {
+  margin: 0.325rem;
+  line-height: 1.4;
+}
+
+ol, ul {
+  list-style-type: none;
+}
+
+table {
+  border-collapse: collapse;
+  margin-top: 2rem;
+}
+table th, table td {
+  border: 1px solid dimgray;
+  padding: 0.5rem 0.75rem;
+  vertical-align: middle;
+}
+table td[colspan] {
+  border-width: 0;
+  padding: 1rem;
+  text-align: center;
+}
+
+.error {
+  color: tomato;
+}
+
+#signin #entry form {
+  margin: 2.8rem;
+}
+#signin #entry form button {
+  margin: 0.7rem 9.1rem;
+}
+#signin #entry dl {
+  margin-left: 1.75rem;
+}
+#signin #entry dl dt, #signin #entry dl dd {
+  display: inline-block;
+  margin: 0;
+}
+#signin #entry dl dt {
+  width: 7rem;
+}
+
+#user #condition form input[name="key"] {
+  width: 20rem;
+  margin-right: 0.5rem;
+}
+#user #update form input[name="name"], #user #regist form input[name="name"] {
+  width: 10rem;
+}
+#user #update form input[name="postal"], #user #regist form input[name="postal"] {
+  width: 6rem;
+  margin: 0 0.25rem;
+  margin-bottom: 0.5rem;
+}
+#user #update form input[name="phone"], #user #regist form input[name="phone"] {
+  width: 10rem;
+}
+#user #update form textarea, #user #regist form textarea {
+  width: 50rem;
+}
+#user #update form select, #user #regist form select {
+  margin-right: 0.25rem;
+}
+
+#book #condition form input[name="title"] {
+  width: 50rem;
+}
+#book #condition form input[name="published"] {
+  width: 6rem;
+}
+#book #condition form input[name="isbn"] {
+  width: 12rem;
+}
+#book #update form input[name="title"], #book #regist form input[name="title"] {
+  width: 50rem;
+}
+
+#service #list form input[type="radio"] {
+  margin: 0;
+  padding: 0;
+}
+#service #list form input[type="radio"][id="no-disposal"], #service #list form input[type="radio"][id="disposal"] {
+  margin-left: 1.0rem;
+}
+#service #list table tr td {
+  text-align: center;
+}
+#service #list table tr td:first-child {
+  text-align: right;
+}
+#service #list table tr td:nth-child(3) {
+  text-align: left;
+}
+#service #list table tr td:last-child {
+  text-align: center;
+}
+#service #list table tr td[colspan] {
+  padding-top: 1.5rem;
+}
+#service #list table tr td[colspan] label {
+  margin-left: 0;
+}
+#service #list table tr td[colspan] label[for="disposal"] {
+  margin-right: 1.75rem;
+}
+#service #disposal form textarea {
+  width: 50rem;
+}
+
+#operation form input[name="key"] {
+  width: 20rem;
+  margin-right: 0.5rem;
+}

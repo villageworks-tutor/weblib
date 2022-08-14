@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+#book {
+	#condition {
+		form {
+			input {
+				&[name="title"] {
+					width: 50rem;
+				}
+				&[name="published"] {
+					width: 6rem;
+				}
+				&[name="isbn"] {
+					width: 12rem;
+				}
+			}
+		}
+	}
+	#update, #regist {
+		form {
+			input {
+				&[name="title"] {
+					width: 50rem;
+				}
+			}
+		}
+	}
+}

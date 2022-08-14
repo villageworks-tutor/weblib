@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+$font-default-size: 1.4rem;
+$font-default-rate: 62.5%;
+
+// ===================================================
+// 基本文字サイズに対して指定した倍率のサイズを計算する。
+// 	@param $scale 指定倍率
+// 	@return 基本文字サイズの指定倍率分のサイズ
+// ===================================================
+@function sizeByScale($scale) {
+	@return $font-default-size * $scale;
+}
+

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>index - 図書管理システム</title>
+	<link rel="stylesheet" href="../../../assets/css/style.css" />
+</head>
+
+<body>
+	<header>
+		<h1>某図書館　図書管理システム</h1>
+		<p><a href="../../../index.html">トップメニューへ戻る</a></p>
+	</header>
+
+	<main id="service">
+		<article id="master">
+			<h2>資料台帳</h2>
+			<section id="list">
+				<h3>目録一覧</h3>
+				<form>
+					<table>
+						<tr>
+							<th>台帳ID</th>
+							<th>ISBN</th>
+							<th>タイトル</th>
+							<th>購入年月日</th>
+							<th>廃棄年月日</th>
+							<th>備考</th>
+							<th>処理選択</th>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>9784791762460</td>
+							<td>人生を完全にダメにするための11のレッスン</td>
+							<td>2005-12-01</td>
+							<td>未廃棄</td>
+							<td></td>
+							<td>
+								<button formaction="disposalView.html?id=4" formmethod="get">廃棄</button>
+							</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>9784791762460</td>
+							<td>人生を完全にダメにするための11のレッスン</td>
+							<td>2005-12-01</td>
+							<td>2008-03-03</td>
+							<td>劣化のため廃棄</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>9784480425993</td>
+							<td>よいこの君主論</td>
+							<td>2019-02-20</td>
+							<td>未廃棄</td>
+							<td></td>
+							<td>
+								<button formaction="disposalView.html?id=4" formmethod="get">廃棄</button>
+							</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>9784894712768</td>
+							<td>UMLによるWebアプリケーション開発</td>
+							<td>2019-02-20</td>
+							<td>未廃棄</td>
+							<td></td>
+							<td>
+								<button formaction="disposalView.html?id=4" formmethod="get">廃棄</button>
+							</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>9784798103259</td>
+							<td>例解 JSPベストプラクティス</td>
+							<td>2019-02-20</td>
+							<td>未廃棄</td>
+							<td></td>
+							<td>
+								<button formaction="disposalView.html?id=4" formmethod="get">廃棄</button>
+							</td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>9784777511716</td>
+							<td>Strutsを活用したWebアプリケーション開発</td>
+							<td>2019-02-20</td>
+							<td>未廃棄</td>
+							<td></td>
+							<td>
+								<button formaction="disposalView.html?id=4" formmethod="get">廃棄</button>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="7">
+								<input type="radio" name="target" id="all" value="0" />
+								<label for="all">全資料</label>
+								<input type="radio" name="target" id="no-disposal" value="1" checked />
+								<label for="no-disposal">未廃棄資料</label>
+								<input type="radio" name="target" id="disposal" value="0" />
+								<label for="disposal">廃棄資料</label>
+								<button formaction="bookMasterNoDisposalView.html" formmethod="get">再検索</button>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</section>
+		</article>
+	</main>
+
+	<footer>
+		<p id="copyright">&copy;2017-2019 XXX All right reserved.</p>
+	</footer>
+</body>
+
+</html>

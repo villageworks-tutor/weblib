@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>index - 図書管理システム</title>
+  <link rel="stylesheet" href="../../../assets/css/style.css" />
+</head>
+
+<body>
+  <header>
+    <h1>某図書館　図書管理システム</h1>
+    <p><a href="../../../index.html">トップメニューへ戻る</a></p>
+  </header>
+
+  <main id="operation">
+    <article>
+      <h2>貸出処理</h2>
+      <section id="condition">
+        <h3>利用者IDの入力</h3>
+        <p>利用者のIDを入力して［検索］ボタンを押してください。<br />利用者のIDを入力せずに［検索］ボタンを押すと再度入力を促すメッセージが表示されます。</p>
+        <form>
+          <input type="number" name="key" value="5" />
+          <button formaction="./searchResultView.html" formmethod="get">検索</button>
+        </form>
+      </section>
+      <section id="result">
+        <h3>利用者の貸出状況</h3>
+        <table>
+          <tr>
+            <th>利用者ID</th>
+            <th>資料ID</th>
+            <th>貸出日</th>
+            <th>返却予定日</th>
+            <th>処理</th>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>
+              <input type="text" name="id" value="5" />
+            </td>
+            <td>2019-02-20</td>
+            <td>2019-03-13</td>
+            <td>
+              <button formaction="lendingCompleteView.html">貸出</button>
+            </td>
+          </tr>
+        </table>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <p id="copyright">&copy;2017-2019 XXX All right reserved.</p>
+  </footer>
+</body>
+
+</html>

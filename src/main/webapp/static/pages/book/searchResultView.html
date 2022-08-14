@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>index - 図書管理システム</title>
+	<link rel="stylesheet" href="../../../assets/css/style.css" />
+</head>
+
+<body>
+	<header>
+		<h1>某図書館　図書管理システム</h1>
+		<p><a href="../../../index.html">トップメニューへ戻る</a></p>
+	</header>
+
+	<main id="book">
+		<article id="search">
+			<h2>資料検索</h2>
+			<section id="condition">
+				<h3>条件入力</h3>
+				<p>検索したい利用者の電子メールアドレスを入力して［検索］ボタンを押してください。<br />電子メールアドレスを入力せずに［検索］ボタンを押すと全利用者が対象となります。</p>
+				<form>
+					<table>
+						<tr>
+							<th>タイトル</th>
+							<td>
+								<input type="text" name="title" />
+							</td>
+						</tr>
+						<tr>
+							<th>著者名</th>
+							<td>
+								<input type="text" name="author" />
+							</td>
+						</tr>
+						<tr>
+							<th>出版社</th>
+							<td>
+								<select name="publisher">
+									<option value="">- 選択してください -</option>
+									<option value="01">青土社</option>
+									<option value="02">筑摩書房</option>
+									<option value="03">翔泳社</option>
+									<option value="04">工学社</option>
+									<option value="05">ピアソン・エデュケーション</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>出版年</th>
+							<td>
+								<input type="number" name="published" />
+							</td>
+						</tr>
+						<tr>
+							<th>ISBN</th>
+							<td>
+								<input type="text" name="isbn" />
+							</td>
+						</tr>
+						<tr>
+							<th>条件組み合わせ</th>
+							<td>
+								<input type="radio" name="refine" id="and" value="0" /><label for="and">AND検索</label>
+								<input type="radio" name="refine" id="or" value="1" /><label for="or">OR検索</label>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<button formaction="searchResulltView.html" formmethod="post">検索</button>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</section>
+			<section id="result">
+				<h3>検索結果</h3>
+				<table>
+					<tr>
+						<th>ISBN</th>
+						<th>図書分類</th>
+						<th>タイトル</th>
+						<th>著者</th>
+						<th>出版社</th>
+						<th>出版年</th>
+						<th>処理選択</th>
+					</tr>
+					<tr>
+						<td>9784791762460</td>
+						<td>自然科学</td>
+						<td>人生を完全にダメにするための11のレッスン</td>
+						<td>ドミニク=ノゲーズ</td>
+						<td>青土社</td>
+						<td>2005</td>
+						<td>
+							<form>
+								<button formaction="./updateView.html" formmethod="post">編集</button>
+								<button formaction="./deleteConfirmView.html" formmethod="post">削除</button>
+								<input type="hidden" name="isbn" value="9784791762460" />
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td>9784777511716</td>
+						<td>技術</td>
+						<td>Strutsを活用したWebアプリケーション開発</td>
+						<td>中村健二</td>
+						<td>工学社</td>
+						<td>2005</td>
+						<td>
+							<form>
+								<button formaction="./updateView.html" formmethod="post">編集</button>
+								<button formaction="./deleteConfirmView.html" formmethod="post">削除</button>
+								<input type="hidden" name="isbn" value="9784777511716" />
+							</form>
+						</td>
+					</tr>
+				</table>
+			</section>
+		</article>
+	</main>
+
+	<footer>
+		<p id="copyright">&copy;2017-2019 XXX All right reserved.</p>
+	</footer>
+</body>
+
+</html>

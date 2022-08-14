@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+@mixin setSearchButton {
+	form {
+		input {
+			&[name="key"] {
+				width: 20rem;
+				margin-right: 0.5rem;
+			}
+		}
+	}
+}
