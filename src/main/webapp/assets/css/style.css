@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   font-size: 62.5%;
 }
@@ -80,14 +81,24 @@ table td[colspan] {
   margin: 0.7rem 9.1rem;
 }
 #signin #entry dl {
+  overflow: hidden;
+  width: 28rem;
   margin-left: 1.75rem;
 }
 #signin #entry dl dt, #signin #entry dl dd {
-  display: inline-block;
+  float: left;
   margin: 0;
+  line-height: 2.25;
 }
 #signin #entry dl dt {
-  width: 7rem;
+  width: 8.4rem;
+}
+#signin #entry dl dt:after {
+  content: "：";
+}
+#signin #entry dl dd {
+  width: 18.2rem;
+  margin: 0 0 0 0.35rem;
 }
 
 #user #condition form input[name="key"] {
