@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import jp.villageworks.datautils.api.Validator;
 import jp.villageworks.datautils.core.UtilsCore;
 import jp.villageworks.passwordutils.api.PasswordUtilsApi;
+import la.bean.AuthBean;
 import la.bean.SigninBean;
 import la.dao.AuthDAO;
 import la.dao.DAOExeption;
@@ -45,9 +46,14 @@ public class AuthService extends Service {
 				return "pages/signin.jsp";
 			}
 			
+			// 認証クラスをインスタンス化
+			AuthBean auth = new AuthBean();
+			auth.setCard(this.parameters.getValue("card"));
+			auth.setPassword(PasswordUtilsApi.createPassword(this.parameters.getValue("password"), this.parameters.getValue("card")));
+			
 			// ユーザ認証を実行
 			AuthDAO dao = new AuthDAO();
-			SigninBean bean = dao.findMemberByCardAndPassword(this.parameters.getValue("card"), PasswordUtilsApi.createPassword(this.parameters.getValue("password"), this.parameters.getValue("card")));
+			SigninBean bean = dao.findMemberByCardAndPassword(auth);
 			// SigninBeanによって処理の分岐
 			if (UtilsCore.isNull(bean)) {
 				// SigninBeanがnullの場合：認証に失敗 ⇒ 自画面遷移（ユーザ認証ページに戻る）
