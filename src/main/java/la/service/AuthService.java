@@ -50,6 +50,7 @@ public class AuthService extends Service {
 			SigninBean bean = dao.findMemberByCardAndPassword(this.parameters.getValue("card"), PasswordUtilsApi.createPassword(this.parameters.getValue("password"), this.parameters.getValue("card")));
 			// SigninBeanによって処理の分岐
 			if (UtilsCore.isNull(bean)) {
+				// SigninBeanがnullの場合：認証に失敗 ⇒ 自画面遷移（ユーザ認証ページに戻る）
 				request.setAttribute("errors", "ユーザー認証に失敗しました。");
 				return "pages/signin.jsp";
 			}
