@@ -10,13 +10,23 @@
 			}
 		}
 		dl {
+			overflow: hidden;
+			width: sizeByScale(20);
 			margin-left: sizeByScale(1.25);
 			dt, dd {
-				display: inline-block;
+				float: left;
 				margin: 0;
+				line-height: 2.25;
 			}
 			dt {
-				width: sizeByScale(5.0);
+				width: sizeByScale(6);
+				&:after {
+					content: "：";
+				}
+			}
+			dd {
+				width:sizeByScale(13);
+				margin: 0 0 0 sizeByScale(0.25);
 			}
 		}
 	}
