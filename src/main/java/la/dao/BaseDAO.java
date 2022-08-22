@@ -14,7 +14,7 @@ public class BaseDAO {
 	/**
 	 * クラス定数：データベース接続情報文字列項目名
 	 */
-	private static final String DB_PROPERTIY = "properties.db";
+	private static final String DB_PROPERTY = "properties.db";
 	private static final String JDBC_DRIVER = "JDBC_DRIVER";
 	private static final String DB_URL = "DB_URL";
 	private static final String DB_USER = "DB_USER";
@@ -31,7 +31,7 @@ public class BaseDAO {
 	 */
 	public BaseDAO() throws DAOExeption {
 		// データベース設定ファイルの読み込み：ResourceBundleを利用
-		ResourceBundle db = ResourceBundle.getBundle(DB_PROPERTIY);
+		ResourceBundle db = ResourceBundle.getBundle(DB_PROPERTY);
 		// データベース接続情報
 		String driver   = db.getString(JDBC_DRIVER);
 		String url      = db.getString(DB_URL);

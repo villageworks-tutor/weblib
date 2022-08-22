@@ -3,7 +3,8 @@ package la.dao;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
 
-import org.junit.jupiter.api.AfterEach;
+import org.dbunit.operation.DatabaseOperation;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -13,23 +14,28 @@ import jp.villageworks.passwordutils.api.PasswordUtilsApi;
 import la.bean.SigninBean;
 import la.matcher.EqualToSignin;
 
-class AuthDaoTest {
-
+class AuthDaoTest extends DBUnitTest {
+	
+	/** テスト補助定数 */
+	private static String PATH_AUTH_DEFAULT = "src/test/java/la/dao/_fixtures/auth/auth_default.xml";
+	
 	/** テスト対象うクラス：system under test */
 	private AuthDAO sut;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		this.sut = new AuthDAO();
+		loadDefaultRecords(PATH_AUTH_DEFAULT);
 	}
-	
-	@AfterEach
-	void tearDownAfterClass() throws Exception {
-	}
-
+		
 	@Nested
-	@DisplayName("AuthDAO#findMemberメソッドのテストクラス")
+	@DisplayName("AuthDAO#findMemberByCardAndPasswor(String, String)メソッドのテストクラス")
 	class FindMemberTest {
+		@AfterAll
+		static void tearDownClass() throws Exception {
+			DatabaseOperation.DELETE_ALL.execute(connection, dataset);
+		}
+		
 		@Test
 		@DisplayName("【Test-03】利用者カード番号「12056692」平文パスワード「password」の利用者はサインインできない")
 		void test_03() throws Exception {
