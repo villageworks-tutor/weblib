@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<!-- 利用者テーブルのレコード -->
+	<member card="12056692" name="梅田 俊章" zipcode="232-0016" address="神奈川県横浜市南区宮元町2-16-18" phone="080-4293-2703" email="mizuho2311@mhwuymgwsr.rp.rql" birthday="1985-07-05" priviledge="0" />
+	<member card="12050662" name="清田 健蔵" zipcode="277-0851" address="千葉県柏市向原町1-17-13" phone="080-3440-9925" email="yuzuki086@udtmsizh.nbl.jrml" birthday="2001-02-01" priviledge="1" />
+	<member card="12058021" name="浜口 秋雄" zipcode="259-0201" address="神奈川県足柄下郡真鶴町真鶴3-20-8" phone="080-4751-9498" email="fujio_tsuchiya@yfqkvmrmfr.geq.bbl" birthday="1987-11-15" priviledge="1" />
+	<member card="12057327" name="古橋 正美" zipcode="121-0807" address="東京都足立区伊興本町1-16伊興本町アパート406" phone="090-4613-0336" email="yoshiko_shimada@ztvzw.frig.fhbl" birthday="1970-10-08" priviledge="0" />
+<!-- 	<member card="12052425" name="吉澤 正徳" zipcode="241-0005" address="神奈川県横浜市旭区白根4-6白根フォレスト216" phone="080-1284-7148" email="chuuzou30475@kwjs.qxl" birthday="1980-01-27" priviledge="1" /> -->
+<!-- 	<member card="12056107" name="橘 良彦" zipcode="231-0862" address="神奈川県横浜市中区山手町2-5-9山手町タワー418" phone="080-6431-9202" email="momokatezuka@wjhpjivinw.hgl" birthday="1997-04-02" priviledge="1" /> -->
+<!-- 	<member card="12058439" name="浅田 薫" zipcode="350-0236" address="埼玉県坂戸市花影町4-2-6" phone="090-1133-3877" email="ikosugi@xsrehtx.uis.ayl" birthday="1978-04-07" priviledge="1" /> -->
+	<!-- 認証テーブルのレコード -->
+	<auth card="12056692" password="7ccb68e74ce41f7db7943a342890bbd43712cae0cf690705e706bd0eb56779c2" />
+	<auth card="12050662" password="7e8f1f5171586a5b86bd654a858e89050f8c38460c9b16529c55c7dc1f99a4e2" />
+	<auth card="12058021" password="1ad7acd335f782b4b331e465b0f00797dcf36a80785df3dbff806a1286255d9c" />
+	<!-- ↓更新レコード -->
+	<auth card="12057327" password="cbf399a3f82bc5329c55041fae9787aed76596f449f8ef906e8edd52cccc62b8" />
+<!-- 	<auth card="12052425" password="ed316da9eb5fdf699f5979dcd6df0f907d01968cb21007fea6587248b990f350" /> -->
+<!-- 	<auth card="12056107" password="9f11b239554e5f7aa45bc586007070c1b76a82ce3f157f91b9692a973366c631" /> -->
+<!-- 	<auth card="12058439" password="30d42ed0a461c661761ab6b87338e9b89486a24ceb7b5c486170daf7cc169d07" /> -->
+</dataset>
