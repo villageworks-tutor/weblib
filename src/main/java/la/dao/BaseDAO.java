@@ -27,9 +27,9 @@ public class BaseDAO {
 
 	/**
 	 * コンストラクタ
-	 * @throws DAOExeption 
+	 * @throws DAOException 
 	 */
-	public BaseDAO() throws DAOExeption {
+	public BaseDAO() throws DAOException {
 		// データベース設定ファイルの読み込み：ResourceBundleを利用
 		ResourceBundle db = ResourceBundle.getBundle(DB_PROPERTY);
 		// データベース接続情報
@@ -43,7 +43,7 @@ public class BaseDAO {
 			this.conn = DriverManager.getConnection(url, user, password);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-			throw new DAOExeption("データベースへの接続に失敗しました。");
+			throw new DAOException("データベースへの接続に失敗しました。");
 		}
 	}
 
