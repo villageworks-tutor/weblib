@@ -9,7 +9,8 @@ import la.bean.MemberBean;
 public class MemberDAO extends BaseDAO {
 	
 	private static final String SQL_FIND_BY_CARD = "SELECT member.id, member.card, member.name, member.zipcode, member.address, member.phone, member.email, member.birthday, member.priviledge AS priviledge_code, priviledge.name AS priviledge_name, created_at, updated_at, erasured_at "
-												 + "FROM member JOIN priviledge ON member.priviledge = priviledge.code "
+												 + "FROM member "
+												 + "JOIN priviledge ON member.priviledge = priviledge.code AND member.erasured_at IS NULL"
 												 + "WHERE member.card = ?";
 
 	/**
