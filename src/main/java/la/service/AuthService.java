@@ -12,8 +12,12 @@ import jp.villageworks.passwordutils.api.PasswordUtilsApi;
 import la.bean.AuthBean;
 import la.bean.SigninBean;
 import la.dao.AuthDAO;
-import la.dao.DAOExeption;
+import la.dao.DAOException;
 
+/**
+ * ユーザ認証機能を実行するサービスクラス
+ * @author tutor
+ */
 public class AuthService extends Service {
 
 	/**
@@ -25,7 +29,7 @@ public class AuthService extends Service {
 	}
 
 	@Override
-	public String execute() throws DAOExeption {
+	public String execute() throws DAOException {
 		// 遷移先URLの初期化
 		String nextPage = this.request.getContextPath();
 		// actionキーを取得
@@ -57,24 +61,40 @@ public class AuthService extends Service {
 			// SigninBeanによって処理の分岐
 			if (UtilsCore.isNull(bean)) {
 				// SigninBeanがnullの場合：認証に失敗 ⇒ 自画面遷移（ユーザ認証ページに戻る）
-				request.setAttribute("errors", "ユーザー認証に失敗しました。");
+				this.request.setAttribute("errors", "ユーザー認証に失敗しました。");
 				return "pages/signin.jsp";
 			}
 			
 			// セッションを取得
-			HttpSession session = request.getSession();
+			HttpSession session = this.request.getSession();
 			SigninBean signin = (SigninBean) session.getAttribute("signin");
 			if (!UtilsCore.isNull(signin)) {
 				// セッションがある場合は不正とみなす：エラーページに遷移
 				session.removeAttribute("signin");
-				request.setAttribute("message", "不正な操作をしました。");
+				this.request.setAttribute("message", "不正な操作をしました。");
 				return "pages/error.jsp";
 			}
 			
 			// セッションスコープに登録
-			session.setAttribute("signin", signin);
+			session.setAttribute("signin", bean);
 			// 遷移先の設定
 			nextPage = "pages/top.jsp";
+		} else if (action.equals("signout")) {
+			HttpSession session = this.request.getSession(false);
+			if (session == null) {
+				// セッションがない場合：タイムアウトと判断
+				this.request.setAttribute("message", "タイムアウトしました。初めから操作をやり直して下さい。");
+				return "pages/error.jsp";
+			}
+			SigninBean signin = (SigninBean) session.getAttribute("signin");
+			if (signin == null) {
+				// サインインユーザ情報がない場合：不正な操作と判断
+				this.request.setAttribute("message", "不正な操作をしました。");
+				return "pages/error.jsp";
+			}
+			// サインインユーザの情報を削除
+			session.removeAttribute("signin");
+			nextPage = "pages/signin.jsp";
 		}
 		return nextPage;
 	}

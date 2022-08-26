@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import la.dao.DAOExeption;
+import la.dao.DAOException;
 import la.parameters.Parameters;
 
 public abstract class Service {
@@ -13,9 +13,9 @@ public abstract class Service {
 	/** 
 	 * 【抽象メソッド】サービスに含まれる各種の処理を実行する。
 	 * @trturn 遷移先URL
-	 * @throws DAOExeption
+	 * @throws DAOException
 	 */
-	abstract String execute() throws DAOExeption;
+	public abstract String execute() throws DAOException;
 	
 	/**
 	 * 【抽象メソッド】パラメータの妥当性検査を行う。

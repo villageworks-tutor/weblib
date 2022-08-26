@@ -10,9 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import la.dao.DAOExeption;
+import la.dao.DAOException;
 import la.parameters.Parameters;
 import la.service.AuthService;
+import la.service.MemberService;
 
 /**
  * Servlet implementation class Controller
@@ -35,14 +36,25 @@ public class Controller extends HttpServlet {
 		String nextPage = "pages/signin.jsp";
 		if (serviceKey == null || serviceKey.isEmpty()) {
 			// 未送信または未入力である場合
+		} else if (serviceKey.equals("top")) {
+			nextPage = "pages/top.jsp";
 		} else if (serviceKey.equals("authenticate")) {
 			// ユーザ認証の場合
 			AuthService service = new AuthService(request);
 			try {
 				nextPage = service.execute();
-			} catch (DAOExeption e) {
-				// TODO 自動生成された catch ブロック
+			} catch (DAOException e) {
 				e.printStackTrace();
+				throw new ServletException(e.getMessage());
+			}
+		} else if (serviceKey.equals("member")) {
+			// 利用車管理サービス
+			MemberService service = new MemberService(request);
+			try {
+				nextPage = service.execute();
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new ServletException(e.getMessage());
 			}
 		}
 		

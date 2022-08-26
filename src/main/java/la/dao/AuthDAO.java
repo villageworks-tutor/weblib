@@ -21,9 +21,9 @@ public class AuthDAO extends BaseDAO {
 	private static final String SQL_UPDATE_PASSWORD = "UPDATE auth set password= ? WHERE card = ?";
 	/**
 	 * コンストラクタ
-	 * @throws DAOExeption
+	 * @throws DAOException
 	 */
-	public AuthDAO() throws DAOExeption {
+	public AuthDAO() throws DAOException {
 		super();
 	}
 
@@ -31,9 +31,9 @@ public class AuthDAO extends BaseDAO {
 	 * 利用者カード番号とパスワードから利用者を取得する。
 	 * @param  auth 利用者カード番号とパスワードを設定した認証クラスのインスタンス
 	 * @return 該当する利用者がある場合は利用者クラスのインスタンス、それ以外の場合はnull
-	 * @throws DAOExeption
+	 * @throws DAOException
 	 */
-	public SigninBean findMemberByCardAndPassword(AuthBean auth) throws DAOExeption {
+	public SigninBean findMemberByCardAndPassword(AuthBean auth) throws DAOException {
 		try (// SQL実行オブエクトの取得
 		     PreparedStatement pstmt = this.conn.prepareStatement(SQL_FIND_AUTH);) {
 			// パラメータバインディング
@@ -52,16 +52,16 @@ public class AuthDAO extends BaseDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DAOExeption("レコードの取得に失敗しました。");
+			throw new DAOException("レコードの取得に失敗しました。");
 		}
 	}
 
 	/**
 	 * パスワードを更新する。
 	 * @param auth 更新対象となる利用者の利用者カード番号と更新するパスワード（ハッシュ化されたパスワード）
-	 * @throws DAOExeption
+	 * @throws DAOException
 	 */
-	public void update(AuthBean auth) throws DAOExeption {
+	public void update(AuthBean auth) throws DAOException {
 		try (// SQLオブジェクトを取得
 			 PreparedStatement pstmt = this.conn.prepareStatement(SQL_UPDATE_PASSWORD);) {
 			// パラメータバインディング
@@ -71,7 +71,7 @@ public class AuthDAO extends BaseDAO {
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DAOExeption("レコードの操作に失敗しました。");
+			throw new DAOException("レコードの操作に失敗しました。");
 		}
 	}
 

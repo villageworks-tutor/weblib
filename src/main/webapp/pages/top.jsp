@@ -8,7 +8,7 @@
 			<h2>利用者管理</h2>
 			<ul>
 				<li><a href="./pages/user/registView.html">登録</a></li>
-				<li><a href="./pages/user/searchView.html">更新</a></li>
+				<li><a href="?service=member&action=search">更新</a></li>
 			</ul>
 		</section>
 		<section id="book">
