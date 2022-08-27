@@ -16,8 +16,6 @@ public class Parameters {
 	 */
 	public Parameters() {
 		this.params = new HashMap<>();
-		
-		
 	}
 	
 	/**
@@ -44,6 +42,20 @@ public class Parameters {
 	 */
 	public Set<String> getKeys() {
 		return this.params.keySet();
+	}
+
+	/**
+	 * 指定されたキーの値を整数に変換する。
+	 * @param target 対象となる値のキー
+	 * @return 数値に変換できる場合はその整数値、それ以外は0
+	 */
+	public int getIntValue(String target) {
+		try {
+			int value = Integer.parseInt(this.params.get(target));
+			return value;
+		} catch (NumberFormatException e) {
+			return 0;
+		}
 	}
 
 }

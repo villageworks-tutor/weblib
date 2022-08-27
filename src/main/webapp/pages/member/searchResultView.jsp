@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:import url="${requestScope.contextPath}/pages/parts/layout.jsp">
 	<c:param name="main" value="user" />
 	<c:param name="article" value="" />
@@ -34,8 +33,12 @@
 						<td>${requestScope.member.email}</td>
 						<td>${requestScope.member.birthday}</td>
 						<td>
-							<form>
-								<button formaction="./updateView.html" formmethod="post">編集</button>
+							<form action="Controller" method="post">
+								<button type="submit" name="id" value="${requestScope.member.id}">
+									編集
+									<input type="hidden" name="service" value="member" />
+									<input type="hidden" name="action"  value="edit" />
+								</button>
 								<button formaction="./deleteCOnfirmView.html" formmethod="post">削除</button>
 							</form>
 						</td>

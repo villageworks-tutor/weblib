@@ -2,6 +2,9 @@ package la.bean;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+
+import jp.villageworks.dateutil.DateConverter;
 
 public class MemberBean {
 
@@ -259,8 +262,9 @@ public class MemberBean {
 	 * 登録日時を取得する。
 	 * @return createdAt 登録日時
 	 */
-	public Timestamp getCreatedAt() {
-		return createdAt;
+	public Date getCreatedAt() {
+		LocalDate date = DateConverter.timestampToLocalDate(this.createdAt);
+		return DateConverter.localDateToSql(date);
 	}
 	
 	/**
@@ -275,8 +279,9 @@ public class MemberBean {
 	 * 更新日時を取得する。
 	 * @return updatedAt 更新日時
 	 */
-	public Timestamp getUpdatedAt() {
-		return updatedAt;
+	public Date getUpdatedAt() {
+		LocalDate date = DateConverter.timestampToLocalDate(this.updatedAt);
+		return DateConverter.localDateToSql(date);
 	}
 
 	/**
@@ -291,8 +296,9 @@ public class MemberBean {
 	 * 削除日時を取得する。
 	 * @return erasuredAt 削除日時
 	 */
-	public Timestamp getErasuredAt() {
-		return erasuredAt;
+	public Date getErasuredAt() {
+		LocalDate date = DateConverter.timestampToLocalDate(this.erasuredAt);
+		return DateConverter.localDateToSql(date);
 	}
 	
 	/**

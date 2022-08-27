@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import jp.villageworks.datautils.core.UtilsCore;
 import la.bean.MemberBean;
 import la.dao.DAOException;
 import la.dao.MemberDAO;
@@ -38,6 +39,19 @@ public class MemberService extends Service {
 				this.request.setAttribute("key", this.parameters.getValue("key"));
 				// 遷移先URLを設定
 				nextPage = "pages/member/searchResultView.jsp";
+			}
+		} else if (action.equals("edit")) {
+			// リクエストパラメータを取得
+			String mode = this.parameters.getValue("mode");
+			int id = this.parameters.getIntValue("id");
+			if (UtilsCore.isEmpty(mode)) {
+				// 利用者IDから利用者を取得：主キー検索を実行
+				MemberDAO dao = new MemberDAO();
+				MemberBean bean = dao.findByPrimaryKey(id);
+				// リクエストスコープに登録
+				this.request.setAttribute("member", bean);
+				// 遷移先URLを設定
+				nextPage = "pages/member/updateView.jsp";
 			}
 		}
 		
