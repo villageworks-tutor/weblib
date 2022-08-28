@@ -233,7 +233,7 @@ public class MemberBean {
 	 * @param day   設定する日
 	 */
 	public void setBirthday(int year, int month, int day) {
-		this.birthday = DateConverter.localDateToSql(LocalDate.of(year, month, month)); 
+		this.birthday = DateConverter.localDateToSql(LocalDate.of(year, month, day)); 
 	}
 
 	/**

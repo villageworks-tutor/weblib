@@ -1,6 +1,7 @@
 package la.parameters;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
@@ -68,8 +69,18 @@ public class Parameters {
 	 * @return java.sql.Dateクラスのインスタンス
 	 */
 	public Date getValueToDate(String key) {
-		LocalDate date = DateConverter.strToLocalDate(key);
+		LocalDate date = DateConverter.strToLocalDate(this.params.get(key));
 		return DateConverter.localDateToSql(date);
+	}
+	
+	/**
+	 * 指定されたキーの値をTimestampクラスのインスタンスに変換する。
+	 * @param key 対象となるパラメータのキー
+	 * @return Timestampクラスのインスタンス
+	 */
+	public Timestamp getValueToTimestamp(String key) {
+		LocalDate date = DateConverter.strToLocalDate(this.params.get(key));
+		return DateConverter.localDateToTimestamp(date);
 	}
 
 }

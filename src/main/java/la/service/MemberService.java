@@ -69,16 +69,31 @@ public class MemberService extends Service {
 				bean.setBirthday(year, month, day);
 				bean.setPriviledgeCode(this.parameters.getValueToInt("priviledgeCode"));
 				bean.setPriviledgeName(this.parameters.getValue("priviledgeName"));
+				bean.setCreatedAt(this.parameters.getValueToTimestamp("createdAt"));
+				bean.setUpdatedAt(this.parameters.getValueToTimestamp("updatedAt"));
+				
 				// リクエストスコープに登録
 				HttpSession session = this.request.getSession();
-				if (session == null) {
-					this.request.setAttribute("message", "タイム・アウトしています。最初から操作し直してください。");
-					nextPage = "pages/error.jsp";
-				}
 				// 利用者のインスタンスをセッションスコープに登録
 				session.setAttribute("member", bean);
 				// 遷移先URLを設定
 				nextPage = "pages/member/updateConfirmView.jsp";
+			} else if (mode.equals("entry")) {
+				// セッションから利用者を取得
+				HttpSession session = this.request.getSession(false);
+				if (session == null) {
+					this.request.setAttribute("message", "タイム・アウトしています。最初から操作し直してください。");
+					nextPage = "pages/error.jsp";
+				}
+				MemberBean bean = (MemberBean) session.getAttribute("member");
+				if (bean == null) {
+					this.request.setAttribute("message", "不正な操作なので、最初から操作し直してください。");
+					nextPage = "pages/error.jsp";
+				}
+				// 利用者をリクエストスコープに登録
+				this.request.setAttribute("member", bean);
+				// 遷移先URLを設定
+				nextPage = "pages/member/updateView.jsp";
 			}
 		}
 		

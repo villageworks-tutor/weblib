@@ -86,11 +86,17 @@
 					</tr>
 					<tr>
 						<th>登録日</th>
-						<td>${requestScope.member.createdAt}</td>
+						<td>
+							${requestScope.member.createdAt}
+							<input type="hidden" name="createdAt" value="${requestScope.member.createdAt}" />
+						</td>
 					</tr>
 					<tr>
 						<th>最終更新日</th>
-						<td>${requestScope.member.updatedAt}</td>
+						<td>
+							${requestScope.member.updatedAt}
+							<input type="hidden" name="updatedAt" value="${requestScope.member.updatedAt}" />
+						</td>
 					</tr>
 					<tr>
 						<td colspan="2">

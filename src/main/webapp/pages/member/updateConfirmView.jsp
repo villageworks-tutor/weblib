@@ -10,7 +10,7 @@
 			<h3>確認</h3>
 			<p>以下の情報で変更します。</p>
 			<p>変更する場合は［更新する］ボタンをクリックしてください。また、修正する場合は［戻る］ボタンをクリックしてください。</p>
-			<form action"Cantroller" method="post">
+			<form action="Controller" method="post">
 				<table>
 					<tr>
 						<th>ID</th>
@@ -41,7 +41,8 @@
 						<td>
 							<fmt:formatDate value="${sessionScope.member.birthday}" pattern="yyyy" />年
 						 	<fmt:formatDate value="${sessionScope.member.birthday}" pattern="M" />月
-						 	<fmt:formatDate value="${sessionScope.member.birthday}" pattern="d" />日</td>
+						 	<fmt:formatDate value="${sessionScope.member.birthday}" pattern="d" />日
+						 </td>
 					</tr>
 					<tr>
 						<th>権限</th>
@@ -49,17 +50,11 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<button type="submit">
+							<button formaction="Controller?service=member&action=edit&mode=complete">
 								更新する
-								<input type="hidden" name="service" value="member" />
-								<input type="hidden" name="action" value="edit" />
-								<input type="hidden" name="mode" value="complete" />
 							</button>
-							<button formaction="updateView.html" formmethod="post">
+							<button formaction="Controller?service=member&action=edit&mode=entry">
 								戻る
-								<input type="hidden" name="service" value="member" />
-								<input type="hidden" name="action" value="edit" />
-								<input type="hidden" name="mode" value="enrty" />
 							</button>
 						</td>
 					</tr>
