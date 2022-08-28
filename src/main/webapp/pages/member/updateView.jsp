@@ -47,35 +47,17 @@
 						<td>
 							<select name="year">
 								<script>
-									for (i = 1900; i <= 2019; i++) {
-										if (i == <fmt:formatDate value="${requestScope.member.birthday}" pattern="yyyy" />) {
-											document.write("<option value=\"" + i + "\" selected>" + i + "</option>");
-										} else {
-											document.write("<option value=\"" + i + "\">" + i + "</option>");
-										}
-									}
+									createYearOptions(new Date().getFullYear(), <fmt:formatDate value="${requestScope.member.birthday}" pattern="yyyy" />);
 								</script>
 							</select>年
 							<select name="month">
 								<script>
-									for (i = 1; i <= 12; i++) {
-										if (i == <fmt:formatDate value="${requestScope.member.birthday}" pattern="M" />) {
-											document.write("<option value=\"" + i + "\" selected>" + i + "</option>");
-										} else {
-											document.write("<option value=\"" + i + "\">" + i + "</option>");
-										}
-									}
+									createMonthOptions(<fmt:formatDate value="${requestScope.member.birthday}" pattern="M" />);
 								</script>
 							</select>月
 							<select name="day">
 								<script>
-									for (i = 1; i <= 31; i++) {
-										if (i == <fmt:formatDate value="${requestScope.member.birthday}" pattern="d" />) {
-											document.write("<option value=\"" + i + "\" selected>" + i + "</option>");
-										} else {
-											document.write("<option value=\"" + i + "\">" + i + "</option>");
-										}
-									}
+									createDayOptions(<fmt:formatDate value="${requestScope.member.birthday}" pattern="d" />);
 								</script>
 							</select>日
 						</td>
@@ -84,14 +66,14 @@
 						<th>権限</th>
 						<td>
 							<c:choose>
-							<c:when test="${requestScope.member.priviledgeCode == 1}">
-							<input type="radio" name="priviledge" id="2" value="1" checked /><label for="2">一般利用者</label>
-							<input type="radio" name="priviledge" id="1" value="0" /><label for="1">システム管理者</label>
-							</c:when>
-							<c:otherwise>
-							<input type="radio" name="priviledge" id="2" value="1" /><label for="2">一般利用者</label>
-							<input type="radio" name="priviledge" id="1" value="0" checked /><label for="1">システム管理者</label>
-							</c:otherwise>
+								<c:when test="${requestScope.member.priviledgeCode == 1}">
+									<input type="radio" name="priviledge" id="2" value="1" checked /><label for="2">一般利用者</label>
+									<input type="radio" name="priviledge" id="1" value="0" /><label for="1">システム管理者</label>
+								</c:when>
+								<c:otherwise>
+									<input type="radio" name="priviledge" id="2" value="1" /><label for="2">一般利用者</label>
+									<input type="radio" name="priviledge" id="1" value="0" checked /><label for="1">システム管理者</label>
+								</c:otherwise>
 							</c:choose>
 						</td>
 					</tr>
