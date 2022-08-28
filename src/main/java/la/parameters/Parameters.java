@@ -1,8 +1,12 @@
 package la.parameters;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+
+import jp.villageworks.dateutil.DateConverter;
 
 public class Parameters {
 	
@@ -46,16 +50,26 @@ public class Parameters {
 
 	/**
 	 * 指定されたキーの値を整数に変換する。
-	 * @param target 対象となる値のキー
+	 * @param key 対象となるパラメータのキー
 	 * @return 数値に変換できる場合はその整数値、それ以外は0
 	 */
-	public int getIntValue(String target) {
+	public int getValueToInt(String key) {
 		try {
-			int value = Integer.parseInt(this.params.get(target));
+			int value = Integer.parseInt(this.params.get(key));
 			return value;
 		} catch (NumberFormatException e) {
 			return 0;
 		}
+	}
+	
+	/**
+	 * 指定されたキーの値をjava.sql.Dateクラスのインスタンスに変換する。
+	 * @param key 対象となるパラメータのキー
+	 * @return java.sql.Dateクラスのインスタンス
+	 */
+	public Date getValueToDate(String key) {
+		LocalDate date = DateConverter.strToLocalDate(key);
+		return DateConverter.localDateToSql(date);
 	}
 
 }

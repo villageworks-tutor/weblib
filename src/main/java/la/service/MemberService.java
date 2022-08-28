@@ -3,6 +3,7 @@ package la.service;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import jp.villageworks.datautils.core.UtilsCore;
 import la.bean.MemberBean;
@@ -43,7 +44,7 @@ public class MemberService extends Service {
 		} else if (action.equals("edit")) {
 			// リクエストパラメータを取得
 			String mode = this.parameters.getValue("mode");
-			int id = this.parameters.getIntValue("id");
+			int id = this.parameters.getValueToInt("id");
 			if (UtilsCore.isEmpty(mode)) {
 				// 利用者IDから利用者を取得：主キー検索を実行
 				MemberDAO dao = new MemberDAO();
@@ -52,6 +53,32 @@ public class MemberService extends Service {
 				this.request.setAttribute("member", bean);
 				// 遷移先URLを設定
 				nextPage = "pages/member/updateView.jsp";
+			} else if (mode.equals("confirm")) {
+				// リクエストパラメータから利用者をインスタンス化
+				MemberBean bean = new MemberBean();
+				bean.setId(this.parameters.getValueToInt("id"));
+				bean.setCard(this.parameters.getValue("card"));
+				bean.setName(this.parameters.getValue("name"));
+				bean.setZipcode(this.parameters.getValue("zipcode"));
+				bean.setAddress(this.parameters.getValue("address"));
+				bean.setPhone(this.parameters.getValue("phone"));
+				bean.setEmail(this.parameters.getValue("email"));
+				int year = this.parameters.getValueToInt("year");
+				int month = this.parameters.getValueToInt("month");
+				int day = this.parameters.getValueToInt("day");
+				bean.setBirthday(year, month, day);
+				bean.setPriviledgeCode(this.parameters.getValueToInt("priviledgeCode"));
+				bean.setPriviledgeName(this.parameters.getValue("priviledgeName"));
+				// リクエストスコープに登録
+				HttpSession session = this.request.getSession();
+				if (session == null) {
+					this.request.setAttribute("message", "タイム・アウトしています。最初から操作し直してください。");
+					nextPage = "pages/error.jsp";
+				}
+				// 利用者のインスタンスをセッションスコープに登録
+				session.setAttribute("member", bean);
+				// 遷移先URLを設定
+				nextPage = "pages/member/updateConfirmView.jsp";
 			}
 		}
 		

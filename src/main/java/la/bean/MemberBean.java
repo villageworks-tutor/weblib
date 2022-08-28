@@ -225,6 +225,16 @@ public class MemberBean {
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
+	
+	/**
+	 * 整数型の年、月、日をもとに生年月日を設定する。
+	 * @param year  設定する年
+	 * @param month 設定する月
+	 * @param day   設定する日
+	 */
+	public void setBirthday(int year, int month, int day) {
+		this.birthday = DateConverter.localDateToSql(LocalDate.of(year, month, month)); 
+	}
 
 	/**
 	 * 権限コードを取得する。

@@ -7,15 +7,21 @@
 	<c:param name="content">
 		<h2>利用者情報更新</h2>
 		<section>
-			<form>
+			<form action="Controller?service=member" method="post">
 				<table>
 					<tr>
 						<th>ID</th>
-						<td>${requestScope.member.id}</td>
+						<td>
+							${requestScope.member.id}
+							<input type="hidden" name="id" value="${requestScope.member.id}" />
+						</td>
 					</tr>
 					<tr>
 						<th>利用者番号</th>
-						<td>${requestScope.member.card}</td>
+						<td>
+							${requestScope.member.card}
+							<input type="hidden" name="card" value="${requestScope.member.card}" />
+						</td>
 					</tr>
 					<tr>
 						<th>利用者名</th>
@@ -67,14 +73,15 @@
 						<td>
 							<c:choose>
 								<c:when test="${requestScope.member.priviledgeCode == 1}">
-									<input type="radio" name="priviledge" id="2" value="1" checked /><label for="2">一般利用者</label>
-									<input type="radio" name="priviledge" id="1" value="0" /><label for="1">システム管理者</label>
+									<input type="radio" name="priviledgeCode" id="2" value="1" checked /><label for="2">一般利用者</label>
+									<input type="radio" name="priviledgeCode" id="1" value="0" /><label for="1">システム管理者</label>
 								</c:when>
 								<c:otherwise>
-									<input type="radio" name="priviledge" id="2" value="1" /><label for="2">一般利用者</label>
-									<input type="radio" name="priviledge" id="1" value="0" checked /><label for="1">システム管理者</label>
+									<input type="radio" name="priviledgeCode" id="2" value="1" /><label for="2">一般利用者</label>
+									<input type="radio" name="priviledgeCode" id="1" value="0" checked /><label for="1">システム管理者</label>
 								</c:otherwise>
 							</c:choose>
+							<input type="hidden" name="priviledgeName" value="${requestScope.member.priviledgeName}" />
 						</td>
 					</tr>
 					<tr>
@@ -87,7 +94,11 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<button formaction="updateConfirmView.html" formmethod="post">確認画面に進む</button>
+							<button type="submit" name="service" value="member">
+								確認画面に進む
+								<input type="hidden" name="action" value="edit" />
+								<input type="hidden" name="mode" value="confirm" />
+							</button>
 						</td>
 					</tr>
 				</table>
