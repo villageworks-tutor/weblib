@@ -217,6 +217,14 @@ public class MemberBean {
 	public Date getBirthday() {
 		return birthday;
 	}
+	
+	/**
+	 * 生年月日文字列を取得する。
+	 * @return birthday 生年月日文字列：書式「yyyy-MM-dd」
+	 */
+	public String getBirthdayStr() {
+		return this.birthday.toString();
+	}
 
 	/**
 	 * 生年月日を設定する。
@@ -224,6 +232,15 @@ public class MemberBean {
 	 */
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
+	}
+	
+	/**
+	 * 生年月日文字列から生年月日を設定する。
+	 * @param birthday 設定する生年月日文字列：書式「yyyy-MM-dd」
+	 */
+	public void setBirthday(String birthday) {
+		LocalDate day = DateConverter.strToLocalDate(birthday);
+		this.birthday = DateConverter.localDateToSql(day);
 	}
 	
 	/**

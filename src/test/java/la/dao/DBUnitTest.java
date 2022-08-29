@@ -18,8 +18,8 @@ class DBUnitTest {
 	/** テスト補助定数 */
 	private static final String DB_PROPERTY = "properties.db";
 	private static final String JDBC_DRIVER = "JDBC_DRIVER";
-	private static final String DB_URL = "DB_URL";
-	private static final String DB_USER = "DB_USER";
+	private static final String DB_URL      = "DB_URL";
+	private static final String DB_USER     = "DB_USER";
 	private static final String DB_PASSWORD = "DB_PASSWORD";
 	
 	/** テスト補助変数 */

@@ -16,6 +16,10 @@ public class MemberDAO extends BaseDAO {
 												 + " FROM member"
 												 + " JOIN priviledge ON member.priviledge = priviledge.code AND member.erasured_at IS NULL"
 												 + " WHERE member.id = ?";
+	private static final String SQL_UPDATE       = "UPDATE member SET"
+												 + " card = ?, name = ?, zipcode = ?, address = ?, phone = ?, email = ?, birthday = ?,"
+												 + " priviledge = ?, updated_at = current_timestamp"
+												 + " WHERE id = ?";
 
 	/**
 	 * コンストラクタ
@@ -63,6 +67,12 @@ public class MemberDAO extends BaseDAO {
 		}
 	}
 
+	/**
+	 * 指定された主キーに対応する利用者を取得する。
+	 * @param id 利用者ID：memberテーブルの主キー
+	 * @return 指定された主キーに対応する利用者が存在する場合は利用者クラスのインスタンス、それ以外はnull
+	 * @throws DAOException
+	 */
 	public MemberBean findByPrimaryKey(int id) throws DAOException {
 		try (// SQL実行オブジェクトを取得
 			 PreparedStatement pstmt = this.conn.prepareStatement(SQL_FIND_BY_PK);) {
@@ -93,6 +103,34 @@ public class MemberDAO extends BaseDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException("レコードの取得に失敗しました。");
+		}
+	}
+
+	/**
+	 * 利用者の情報を更新する。
+	 * @param member 更新情報を含んだ利用者クラスのインスタンス
+	 * @return 処理に成功した場合は1、それ以外はDAO例外
+	 * @throws DAOException
+	 */
+	public int update(MemberBean member) throws DAOException {
+		try (// SQL実行オブジェクトを取得
+			 PreparedStatement pstmt = this.conn.prepareStatement(SQL_UPDATE)) {
+			// パラメータバインディング
+			pstmt.setString(1, member.getCard());
+			pstmt.setString(2, member.getName());
+			pstmt.setString(3, member.getZipcode());
+			pstmt.setString(4, member.getAddress());
+			pstmt.setString(5, member.getPhone());
+			pstmt.setString(6, member.getEmail());
+			pstmt.setString(7, member.getBirthdayStr());
+			pstmt.setInt(8, member.getPriviledgeCode());
+			pstmt.setInt(9, member.getId());
+			// SQLの実行
+			int row = pstmt.executeUpdate();
+			return row;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの操作に失敗しました。");
 		}
 	}
 

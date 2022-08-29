@@ -8,6 +8,13 @@
 		<h2>利用者情報更新</h2>
 		<section>
 			<form action="Controller?service=member" method="post">
+				<c:if test="${!empty requestScope.messages}">
+					<ol class="error">
+					<c:forEach items="${requestScope.messages}" var="message">
+						<li>${message}</li>
+					</c:forEach>
+					</ol>
+				</c:if>
 				<table>
 					<tr>
 						<th>ID</th>
@@ -32,7 +39,7 @@
 					<tr>
 						<th>住所</th>
 						<td>
-							〒<input type="text" name="postal" value="${requestScope.member.zipcode}" /><br />
+							〒<input type="text" name="zipcode" value="${requestScope.member.zipcode}" /><br />
 							<textarea name="address">${requestScope.member.address}</textarea>
 						</td>
 					</tr>
