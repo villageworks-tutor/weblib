@@ -6,6 +6,7 @@
 	<meta charset="UTF-8">
 	<title>某図書館　図書管理システム</title>
 	<link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/style.css" />
+	<script src="<%= request.getContextPath() %>/assets/js/function.js"></script>
 </head>
 <body>
 	<!-- ヘッダ領域：相対パスの例 -->

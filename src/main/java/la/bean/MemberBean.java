@@ -2,6 +2,9 @@ package la.bean;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+
+import jp.villageworks.dateutil.DateConverter;
 
 public class MemberBean {
 
@@ -214,6 +217,14 @@ public class MemberBean {
 	public Date getBirthday() {
 		return birthday;
 	}
+	
+	/**
+	 * 生年月日文字列を取得する。
+	 * @return birthday 生年月日文字列：書式「yyyy-MM-dd」
+	 */
+	public String getBirthdayStr() {
+		return this.birthday.toString();
+	}
 
 	/**
 	 * 生年月日を設定する。
@@ -221,6 +232,25 @@ public class MemberBean {
 	 */
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
+	}
+	
+	/**
+	 * 生年月日文字列から生年月日を設定する。
+	 * @param birthday 設定する生年月日文字列：書式「yyyy-MM-dd」
+	 */
+	public void setBirthday(String birthday) {
+		LocalDate day = DateConverter.strToLocalDate(birthday);
+		this.birthday = DateConverter.localDateToSql(day);
+	}
+	
+	/**
+	 * 整数型の年、月、日をもとに生年月日を設定する。
+	 * @param year  設定する年
+	 * @param month 設定する月
+	 * @param day   設定する日
+	 */
+	public void setBirthday(int year, int month, int day) {
+		this.birthday = DateConverter.localDateToSql(LocalDate.of(year, month, day)); 
 	}
 
 	/**
@@ -259,8 +289,9 @@ public class MemberBean {
 	 * 登録日時を取得する。
 	 * @return createdAt 登録日時
 	 */
-	public Timestamp getCreatedAt() {
-		return createdAt;
+	public Date getCreatedAt() {
+		LocalDate date = DateConverter.timestampToLocalDate(this.createdAt);
+		return DateConverter.localDateToSql(date);
 	}
 	
 	/**
@@ -275,8 +306,9 @@ public class MemberBean {
 	 * 更新日時を取得する。
 	 * @return updatedAt 更新日時
 	 */
-	public Timestamp getUpdatedAt() {
-		return updatedAt;
+	public Date getUpdatedAt() {
+		LocalDate date = DateConverter.timestampToLocalDate(this.updatedAt);
+		return DateConverter.localDateToSql(date);
 	}
 
 	/**
@@ -291,8 +323,9 @@ public class MemberBean {
 	 * 削除日時を取得する。
 	 * @return erasuredAt 削除日時
 	 */
-	public Timestamp getErasuredAt() {
-		return erasuredAt;
+	public Date getErasuredAt() {
+		LocalDate date = DateConverter.timestampToLocalDate(this.erasuredAt);
+		return DateConverter.localDateToSql(date);
 	}
 	
 	/**
