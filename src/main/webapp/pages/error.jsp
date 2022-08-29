@@ -7,6 +7,7 @@
 		<h2>システムエラー</h2>
 		<section id="message-list">
 			<p class="error"><c:out value="${requestScope.message}" /></p>
+			<p><a href="Controller">ユーザ認証ページに戻る</a></p>
 		</section>
 	</c:param>
 </c:import>
