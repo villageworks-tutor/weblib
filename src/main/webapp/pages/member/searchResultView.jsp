@@ -39,7 +39,7 @@
 									<input type="hidden" name="service" value="member" />
 									<input type="hidden" name="action"  value="edit" />
 								</button>
-								<button formaction="./deleteCOnfirmView.html" formmethod="post">削除</button>
+								<button formaction="Controller?service=member&action=erasure&id=${requestScope.member.id}" formmethod="post">削除</button>
 							</form>
 						</td>
 					</tr>
