@@ -20,6 +20,8 @@ public class MemberDAO extends BaseDAO {
 												 + " card = ?, name = ?, zipcode = ?, address = ?, phone = ?, email = ?, birthday = ?,"
 												 + " priviledge = ?, updated_at = current_timestamp"
 												 + " WHERE id = ?";
+	private static final String SQL_PHYSICAL_DELETE = "DELETE FROM member WHERE id = ?";
+	private static final String SQL_LOGICAL_DELETE  = "UPDATE member SET erasured_at = current_timestamp WHERE id = ?";
 
 	/**
 	 * コンストラクタ
@@ -128,6 +130,19 @@ public class MemberDAO extends BaseDAO {
 			// SQLの実行
 			int row = pstmt.executeUpdate();
 			return row;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの操作に失敗しました。");
+		}
+	}
+
+	public void delete(int id) throws DAOException {
+		try (// SQL実行オブジェクトを取得
+			 PreparedStatement pstmt = this.conn.prepareStatement(SQL_LOGICAL_DELETE)) {
+			// パラメータバインディング
+			pstmt.setInt(1, id);
+			// SQLの実行
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException("レコードの操作に失敗しました。");
