@@ -125,6 +125,29 @@ public class MemberService extends Service {
 				// 遷移先URLを設定
 				nextPage = "pages/member/updateCompleteView.jsp";
 			}
+		} else if (action.equals("erasure")) {
+			// リクエストパラメータを取得
+			String mode = this.parameters.getValue("mode");
+			int id = this.parameters.getValueToInt("id");
+			String card = this.parameters.getValue("key");
+			if (mode == null || mode.isEmpty() || mode.equals("confirm")) {
+				// 送信された利用者IDの利用者インスタンスを取得
+				MemberDAO dao = new MemberDAO();
+				MemberBean bean = dao.findByPrimaryKey(id);
+				// リクエストスコープに利用者インスタンスを登録
+				this.request.setAttribute("member", bean);
+				// 遷移先URLを設定
+				nextPage = "pages/member/deleteConfirmView.jsp";
+			} else if (mode.equals("complete")) {
+				// MemberDAoを取得
+				MemberDAO dao = new MemberDAO();
+				// 削除を実行
+				dao.delete(id);
+				// リクエストスコープに登録
+				this.request.setAttribute("card", card);
+				// 遷移先URLを設定
+				nextPage = "pages/member/deleteCompleteView.jsp";
+			}
 		}
 		
 		return nextPage;
