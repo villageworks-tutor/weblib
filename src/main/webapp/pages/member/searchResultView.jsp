@@ -9,11 +9,17 @@
 			<h3>条件入力</h3>
 			<p>検索したい利用者の電子メールアドレスを入力して［検索］ボタンを押してください。電子メールアドレスを入力せずに［検索］ボタンを押すと全利用者が対象となります。</p>
 			<form>
-				<input type="text" name="key" value="${requestScope.key}" /><button formaction="./searchResultView.html" formmethod="post">検索</button>
+				<input type="text" name="key" value="${requestScope.key}" />
+				<button formaction="Controller?service=member&action=search" formmethod="post">検索</button>
 			</form>
 		</section>
 		<section id="result">
 			<h3>検索結果</h3>
+			<c:choose>
+			<c:when test="${empty requestScope.member}">
+			<p>該当する利用者は登録されていません。</p>
+			</c:when>
+			<c:otherwise>
 			<form>
 				<table>
 					<tr>
@@ -45,6 +51,8 @@
 					</tr>
 				</table>
 			</form>
+			</c:otherwise>
+			</c:choose>
 		</section>
 	</c:param>
 </c:import>

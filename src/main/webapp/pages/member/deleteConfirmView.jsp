@@ -50,9 +50,10 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<button formaction="deleteCompleteView.html" formmethod="post">削除する</button>
+							<button formaction="Controller?service=member&action=erasure&mode=complete" formmethod="post">削除する</button>
 							<button formaction="Controller?service=member&action=search&mode=result" formmethod="post">戻る</button>
 							<input type="hidden" name="key" value="${requestScope.member.card}" />
+							<input type="hidden" name="id" value="${requestScope.member.id}" />
 						</td>
 					</tr>
 				</table>
